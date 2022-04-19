@@ -10,8 +10,9 @@
 }
 
 .nav {
-  border: 1px solid red;  
-  justify-content: space-around;
+  border: 1px solid red; 
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-items > li {
@@ -35,12 +36,18 @@
     display: grid;
     grid-template-columns: min-content auto;
     grid-template-rows: min-content;
-    grid-template-areas: 
-      'top top'
+    grid-template-areas: 'top top'
       'sidebar left'
-      'main main'
-      ;
-    
+      'main main';
+    justify-items: center;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-items > li {
+    display: flex;
   }
 
   .App-header {
@@ -53,6 +60,10 @@
 
   .sortby-box {
     grid-area: left;
+  }
+
+  .main-display {
+    list-style-type: none;
   }
   
 }

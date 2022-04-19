@@ -11,8 +11,11 @@ function App() {
       </header> 
       <nav className='nav'>
           <ul className='nav-items'>
-            <li> test </li>
-            <li> test </li>
+            <li> navbar link 1 to be added... </li>
+            <li> navbar link 2 to be added... </li>
+            <li> navbar link 3 to be added... </li>
+
+
           </ul>
       </nav>
       <form className='search-box'>
@@ -20,8 +23,7 @@ function App() {
         <input placeholder='authors, topics' type='text'/> 
         <button> search </button>
         <lable> sortby </lable>
-        <select className='sortby-box'>
-            
+        <select className='sortby-box'>     
             <option> date </option>
             <option> votes </option>
             <option> comments </option>
