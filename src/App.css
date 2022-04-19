@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+  margin: 1px;
+  padding: 10px;
+}
+
+.App-header {
+  border: 1px solid blue;
+  margin: auto;
+}
+
+.nav {
+  border: 1px solid red;  
+  justify-content: space-around;
+}
+
+.nav-items > li {
+  list-style-type: none;
+}
+
+.card-box {
+  border: 1px solid green;
+  padding: 2px;
+  margin: 6px auto;
+  
+}
+
+.card {
+  border: 1px solid silver;
+  box-shadow: 1px 1px 7px 1px ;
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content;
+    grid-template-areas: 
+      'top top'
+      'sidebar left'
+      'main main'
+      ;
+    
+  }
+
+  .App-header {
+    grid-area: top left;
+  }
+
+  .search-box {
+    grid-area: top left;
+  }
+
+  .sortby-box {
+    grid-area: left;
+  }
+  
+}
+
+
