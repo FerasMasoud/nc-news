@@ -11,3 +11,10 @@ export const getArticles = () => {
         return(response.data);
     })
 }
+
+export const getSingleArticles = (article_id) => {
+    return newApi.get(`/articles/${article_id}`)
+    .then((response) => {
+        return(response.data);
+    })
+}

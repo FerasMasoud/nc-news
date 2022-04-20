@@ -7,7 +7,6 @@ import { getArticles } from '../utils/api';
 function Articles() {
 
     const [articles, setArticles] = useState([]);
-    //use effect 
     useEffect(() => {
         getArticles().then((ArtilesFromApi) => {
             setArticles(ArtilesFromApi);
@@ -17,11 +16,10 @@ function Articles() {
     return (
         <main className='main-display'>
             {articles.map((article) => {
-                console.log(article, ' << article');
                 return (
                     <div className='card-box'>
                         <li className='card' key={article.article_id}>
-                            <h2> {article.title} </h2>
+                            <h2> <Link to={`articles/${article.article_id}`}> {article.title} </Link></h2>
                             <h3> Author: {article.author} </h3>
                             <h3> Topic: <Link to={`/topics/${article.topic}`}> {article.topic}</Link> </h3>
                             <h3> Votes: {article.votes} </h3>
