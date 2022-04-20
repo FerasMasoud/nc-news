@@ -1,7 +1,8 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import Articles from './components/Articles';
-
+import Topic from './components/Topic';
+import Nav from './components/Nav';
 
 function App() {
   return (
@@ -9,15 +10,7 @@ function App() {
       <header className="App-header">
         <h1 className='title'> nc-news </h1>   
       </header> 
-      <nav className='nav'>
-          <ul className='nav-items'>
-            <li> navbar link 1 to be added... </li>
-            <li> navbar link 2 to be added... </li>
-            <li> navbar link 3 to be added... </li>
-
-
-          </ul>
-      </nav>
+      <Nav/>
       <form className='search-box'>
         <lable > search </lable> 
         <input placeholder='authors, topics' type='text'/> 
@@ -35,6 +28,8 @@ function App() {
       
       <Routes>
         <Route path='/' element={<Articles/>}> </Route>
+        <Route path='/topics/:topic' element={<Topic/>}> </Route>
+
       </Routes>
 
     </div>
