@@ -11,4 +11,3 @@ export const getArticles = () => {
         return(response.data);
     })
 }
-
