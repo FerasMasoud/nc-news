@@ -5,6 +5,10 @@ import Topic from './components/Topic';
 import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
+import PostComment from './components/PostComment';
+import DisplayComments from './components/DisplayComments';
+
+
 
 function App() {
   return (
