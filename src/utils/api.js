@@ -25,3 +25,13 @@ export const upVoteAnArticle = (article_id) => {
         return response.data;
     }) 
 }
+
+
+export const displayCommentsOfSelectedArticle = (article_id) => {
+    return newApi.get(`/articles/${article_id}/comments`)
+    .then((response) => {
+        console.log(response.data, ' << response data');
+        return response.data;
+    })
+
+}
