@@ -30,6 +30,17 @@
   box-shadow: 1px 1px 7px 1px ;
 }
 
+.comments-box {
+  margin-right: 30px;
+}
+
+.comments {
+  list-style-type: none;
+  border: 1px solid;
+  margin: 4px;
+  padding: 4px;
+}
+
 @media only screen and (min-width: 768px) {
   .App {
     display: grid;

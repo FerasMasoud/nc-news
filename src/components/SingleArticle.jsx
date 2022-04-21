@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getSingleArticles, upVoteAnArticle } from '../utils/api';
+import Comments from './Comments';
+import { displayCommentsOfSelectedArticle } from '../utils/api';
+
+
 
 function SingleArticle() {
 
@@ -18,14 +22,13 @@ function SingleArticle() {
     }, [])
 
     //vote
-    const handleClick = (e) => {
-        if(hasVoted) return ;
+    const handleVote = (e) => {
+        if(hasVoted) return;
         else {
             e.preventDefault();
             setUpVote((currVotes) =>  currVotes + 1);
 
-            upVoteAnArticle(article_id).then(() => {
-                
+            upVoteAnArticle(article_id).then(() => {  
                 setHasVoted(true);
             })
             .catch(() => {
@@ -37,6 +40,7 @@ function SingleArticle() {
         }    
     }
 
+
     return (
         <main className='main-display'>
             <div className='card-box'> 
@@ -44,14 +48,36 @@ function SingleArticle() {
                     <h2> Title: {singleArticle.title} </h2>
                     <h3> Author: {singleArticle.author} </h3>
                     <h3> Topic: {singleArticle.topic} </h3> 
-                    <h3> Votes: {singleArticle.votes + upVote} <button onClick={handleClick}> vote </button> </h3> 
+                    <h3> Votes: {singleArticle.votes + upVote} <button onClick={handleVote}> vote </button> </h3> 
                     <p> {error} </p>
                     <h3> comments: {singleArticle.comment_count} </h3> 
+                    <section>
+                        <DisplayComments>       
+                            <Comments/>
+                        </DisplayComments>
+                    </section>                
                     <p> created at: {singleArticle.created_at} </p>
+
                 </li>
             </div>
         </main>
     )
+
+}
+
+
+function DisplayComments ({children}) {
+    const [showComments, setShowComments] = useState(false);
+
+    const toggleShow = () => {
+        setShowComments((currState) => !currState)     
+    }
+
+    return <div>
+            {showComments ? children : null}
+            {console.log(showComments)}
+            <button onClick={toggleShow}> Show Comments </button>
+    </div>   
 }
 
 export default SingleArticle
