@@ -10,6 +10,8 @@ function PostComment ({setAllComments}) {
     const [comment, setComment] = useState('');
     const [SubmittedMsg, setSubmittedMsg ] = useState('');
     const [invalidUser, setInvalidUser] = useState('');
+    
+    //
 
     const handleCommentSubmit = (e) => {    
         e.preventDefault();    

@@ -46,3 +46,10 @@ export const postCommentToExistingArticle = (article_id, username, body) => {
         return response.data;
     })
 }
+
+export const deleteCommentFromArticle = (comment_id) => {
+    return newApi.delete(`/comments/${comment_id}`);
+    // .then((response) => {
+    //     return response.data;
+    // })
+}

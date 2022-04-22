@@ -4,7 +4,7 @@ import { displayCommentsOfSelectedArticle } from '../utils/api';
 
 
 
-function Comments({setAllComments, allComments}) {
+function Comments({ allComments, setAllComments}) {
     const { article_id } = useParams();
     
     
