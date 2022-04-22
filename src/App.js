@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
 import SortBy from './components/SortBy';
-import {useState} from 'react';
+import { useState } from 'react';
 
 
 
