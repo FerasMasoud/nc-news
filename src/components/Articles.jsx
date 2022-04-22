@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getArticles } from '../utils/api';
-import SortBy from './SortBy';
 
 
 function Articles({articles , setArticles}) {
@@ -17,7 +16,6 @@ function Articles({articles , setArticles}) {
         <main className='main-display'>
             {articles.map((article) => {
                 return (
-                    
                     <div className='card-box' key={article.article_id}>
                         <li className='card' >
                             <h2> <Link to={`articles/${article.article_id}`}> {article.title} </Link></h2>

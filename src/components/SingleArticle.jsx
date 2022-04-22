@@ -8,11 +8,13 @@ import PostComment from './PostComment';
 
 function SingleArticle() {
 
+    const [allComments, setAllComments] = useState([]);
     const { article_id } = useParams();
     const [singleArticle, setSingleArticle] = useState({})
     const [upVote, setUpVote] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [error, setError] = useState('');
+    const [commentCount, setCommentCount] = useState(0);
 
     //post comments states
     
@@ -55,12 +57,12 @@ function SingleArticle() {
                     <div className='comment-buttons'>
                         <>
                             <DisplayCommentForm>
-                                <PostComment/>
+                                <PostComment setAllComments={setAllComments}/>
                             </DisplayCommentForm>
                         </>
                         <section>
                             <DisplayComments>       
-                                <Comments/>
+                                <Comments setAllComments={setAllComments} allComments={allComments}/>
                             </DisplayComments>
                         </section>  
                     </div>
@@ -74,6 +76,7 @@ function SingleArticle() {
 
 }
 
+// move to a seperate file
 function DisplayCommentForm ({children}) {
     const [form, setForm] = useState(false);
 
