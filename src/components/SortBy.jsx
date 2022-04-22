@@ -25,7 +25,7 @@ function SortBy({setArticles}) {
     
     return (
         <div>
-            <select className='sortby-box' value={sortValue} onChange={() => useEffect(() => handleSort )}> 
+            <select className='sortby-box' value={sortValue} onChange={useEffect(() => handleSort )}> 
                 <option> select sort preference </option>   
                 <option value='votes'> votes </option>
                 <option value='created_at'> ccreated_at </option>
