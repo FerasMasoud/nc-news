@@ -15,8 +15,8 @@ function PostComment ({setAllComments}) {
         postCommentToExistingArticle(article_id, username, comment).then((response) => {
             setAllComments((currComments) => [response, ...currComments]);
             setComment('');
-            console.log('comment posted');
             setSubmittedMsg(' comment submitted.');
+
         })
         .catch((err) => {
             console.log(err, ' err');

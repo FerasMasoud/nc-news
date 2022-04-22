@@ -14,6 +14,7 @@ function SingleArticle() {
     const [upVote, setUpVote] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [error, setError] = useState('');
+    const [commentCount, setCommentCount] = useState(0);
 
     //post comments states
     
