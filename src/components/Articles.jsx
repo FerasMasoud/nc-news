@@ -16,6 +16,7 @@ function Articles() {
         <main className='main-display'>
             {articles.map((article) => {
                 return (
+
                     <div className='card-box' key={article.article_id}>
                         <li className='card' >
                             <h2> <Link to={`articles/${article.article_id}`}> {article.title} </Link></h2>
@@ -24,7 +25,6 @@ function Articles() {
                             <h3> Votes: {article.votes} </h3>
                             <h3 > comments: {article.comment_count} </h3>
                             <p> created at: {article.created_at} </p>
-
                         </li>
                     </div>
                 )

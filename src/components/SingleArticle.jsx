@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getSingleArticles, upVoteAnArticle } from '../utils/api';
 import Comments from './Comments';
-import { displayCommentsOfSelectedArticle } from '../utils/api';
-
-
+import DisplayComments from './DisplayComments';
+// import { postCommentToExistingArticle } from '../utils/api';
+import PostComment from './PostComment';
 
 function SingleArticle() {
 
+    const [allComments, setAllComments] = useState([]);
     const { article_id } = useParams();
     const [singleArticle, setSingleArticle] = useState({})
     const [upVote, setUpVote] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [error, setError] = useState('');
+    const [commentCount, setCommentCount] = useState(0);
 
-
+    //post comments states
+    
     useEffect(() => {
         getSingleArticles(article_id).then((article) => {
             setSingleArticle(article);
@@ -40,7 +43,6 @@ function SingleArticle() {
         }    
     }
 
-
     return (
         <main className='main-display'>
             <div className='card-box'> 
@@ -51,11 +53,20 @@ function SingleArticle() {
                     <h3> Votes: {singleArticle.votes + upVote} <button onClick={handleVote}> vote </button> </h3> 
                     <p> {error} </p>
                     <h3> comments: {singleArticle.comment_count} </h3> 
-                    <section>
-                        <DisplayComments>       
-                            <Comments/>
-                        </DisplayComments>
-                    </section>                
+
+                    <div className='comment-buttons'>
+                        <>
+                            <DisplayCommentForm>
+                                <PostComment setAllComments={setAllComments}/>
+                            </DisplayCommentForm>
+                        </>
+                        <section>
+                            <DisplayComments>       
+                                <Comments setAllComments={setAllComments} allComments={allComments}/>
+                            </DisplayComments>
+                        </section>  
+                    </div>
+
                     <p> created at: {singleArticle.created_at} </p>
 
                 </li>
@@ -65,19 +76,19 @@ function SingleArticle() {
 
 }
 
+// move to a seperate file
+function DisplayCommentForm ({children}) {
+    const [form, setForm] = useState(false);
 
-function DisplayComments ({children}) {
-    const [showComments, setShowComments] = useState(false);
-
-    const toggleShow = () => {
-        setShowComments((currState) => !currState)     
+    const toggleForm = () => {
+        setForm((currState) => !currState)     
     }
 
     return <div>
-            {showComments ? children : null}
-            {console.log(showComments)}
-            <button onClick={toggleShow}> Show Comments </button>
-    </div>   
-}
+        {form ? children : null}
+        <button onClick={toggleForm}> add comment </button>
+    </div>
+} 
+
 
 export default SingleArticle

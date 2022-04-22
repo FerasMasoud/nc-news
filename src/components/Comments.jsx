@@ -4,13 +4,12 @@ import { displayCommentsOfSelectedArticle } from '../utils/api';
 
 
 
-function Comments() {
+function Comments({setAllComments, allComments}) {
     const { article_id } = useParams();
-    const [allComments, setAllComments] = useState([]);
+    
     
     useEffect(() => {
         displayCommentsOfSelectedArticle(article_id).then((comments) => {
-
             setAllComments(comments);
         })
         .catch((err) => {
@@ -21,7 +20,7 @@ function Comments() {
     return (
         <section>
             <ul className='comments-box'> 
-                {allComments.map((comment) => {
+                {allComments.length === 0 ? <p> no comments on this article </p> :allComments.map((comment) => {
                     return <li className='comments' key={comment.comment_id}> 
                            {comment.body}; 
                     </li>
