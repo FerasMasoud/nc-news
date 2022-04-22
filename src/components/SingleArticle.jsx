@@ -74,6 +74,7 @@ function SingleArticle() {
 
 }
 
+// move to a seperate file
 function DisplayCommentForm ({children}) {
     const [form, setForm] = useState(false);
 

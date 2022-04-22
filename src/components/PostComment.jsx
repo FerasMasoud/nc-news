@@ -11,8 +11,8 @@ function PostComment () {
     const handleCommentSubmit = (e) => {   
         e.preventDefault();
         
-        postCommentToExistingArticle(article_id, username, comment).then((data) => {
-            console.log(data, 'post commment data' );   
+        postCommentToExistingArticle(article_id, username, comment).then(() => {
+            
         })
         .catch((err) => {
             console.log(err, ' err');
