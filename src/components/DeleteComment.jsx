@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { deleteCommentFromArticle } from '../utils/api';
 
-function DeleteComment() {
+function DeleteComment({allComments, setAllComments, comment_id}) {
 
-    const {article_id} = useParams();
     const [deletedMsg, setDeletedMsg] = useState('');
     const [deleteErr, setDeleteErr] = useState('');
 
     const handleDelete = (e) => {
         e.preventDefault();
 
-        deleteCommentFromArticle(article_id).then(() => {
+        deleteCommentFromArticle(comment_id).then(() => {
             setDeletedMsg('comment deleted.')
+            setAllComments((currComments) => {
+                return currComments.filter((comment) => {
+                    return comment.comment_id !== comment_id;  
+                }) 
+            })
         })
         .catch(() => {
             setDeleteErr(' something went wrong, please try again.')
@@ -21,7 +25,7 @@ function DeleteComment() {
 
     return (
         <div>
-            <button onClick={handleDelete}></button>
+            <button onClick={handleDelete}> delete </button>
             <p> 
                 {deletedMsg}
                 {deleteErr}

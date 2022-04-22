@@ -19,7 +19,7 @@ function PostComment ({setAllComments}) {
             setAllComments((currComments) => [response, ...currComments]);
             setComment('');
             setSubmittedMsg(' comment submitted.');
-
+            
         })
         .catch((err) => {
             setInvalidUser('user invalid, please use existing user');
