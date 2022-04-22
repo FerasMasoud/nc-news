@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { sorteArticlesBy } from '../utils/api';
 import Articles from './Articles';
 
-function SortBy() {
+function SortBy({setArticles}) {
 
     const [ sortValue, setSortValue] = useState('');
+    
+    useEffect(() => {
+        
+    }, [])
     
     const handleSort = (e) => {
         let value = e.target.value;
@@ -18,10 +22,10 @@ function SortBy() {
             console.log(err, ' << the err');
         })
     }
-
+    
     return (
         <div>
-            <select className='sortby-box' value={sortValue} onChange={handleSort}> 
+            <select className='sortby-box' value={sortValue} onChange={() => useEffect(() => handleSort )}> 
                 <option> select sort preference </option>   
                 <option value='votes'> votes </option>
                 <option value='created_at'> ccreated_at </option>
