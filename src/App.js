@@ -6,10 +6,13 @@ import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
 import SortBy from './components/SortBy';
+import {useState} from 'react';
 
 
 
 function App() {
+  const [articles, setArticles] = useState([]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +24,7 @@ function App() {
         <input placeholder='authors, topics' type='text'/> 
         <button> search </button>
         <label> sortby </label>
-        <SortBy/>
+        <SortBy setArticles={setArticles}/>
         
         {/* <select className='sortby-box'>     
             <option> date </option>
@@ -34,7 +37,7 @@ function App() {
       
       
       <Routes>
-        <Route path='/' element={<Articles />}> </Route>
+        <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>}> </Route>
         <Route path='/topics/:topic' element={<Topic/>}> </Route>
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
         <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
