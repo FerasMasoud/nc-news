@@ -40,7 +40,7 @@ function App() {
         <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>} />
         <Route path='/topics/:topic' element={<Topic/>} />
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
-        <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
+        <Route path='/articles/:article_id/comments' element={<Comments/>} />
         <Route path='/articles/?Sort_By=' element={<SortBy/>}> </Route>
 
       </Routes>
