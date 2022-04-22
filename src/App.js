@@ -1,12 +1,11 @@
 import './App.css';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes,  } from 'react-router-dom';
 import Articles from './components/Articles';
 import Topic from './components/Topic';
 import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
-import PostComment from './components/PostComment';
-import DisplayComments from './components/DisplayComments';
+import SortBy from './components/SortBy';
 
 
 
@@ -22,11 +21,13 @@ function App() {
         <input placeholder='authors, topics' type='text'/> 
         <button> search </button>
         <label> sortby </label>
-        <select className='sortby-box'>     
+        <SortBy/>
+        
+        {/* <select className='sortby-box'>     
             <option> date </option>
             <option> votes </option>
             <option> comments </option>
-        </select>
+        </select> */}
       </form>
  
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/topics/:topic' element={<Topic/>}> </Route>
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
         <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
+        <Route path='/articles/?Sort_By=' element={<SortBy/>}> </Route>
 
       </Routes>
 
