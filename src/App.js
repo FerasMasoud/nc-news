@@ -37,7 +37,7 @@ function App() {
       
       
       <Routes>
-        <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>}> </Route>
+        <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>} />
         <Route path='/topics/:topic' element={<Topic/>} />
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
         <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
