@@ -7,7 +7,7 @@ import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
 import PostComment from './components/PostComment';
 import DisplayComments from './components/DisplayComments';
-
+import {useState} from 'react';
 
 
 function App() {
@@ -28,15 +28,13 @@ function App() {
             <option> comments </option>
         </select>
       </form>
- 
-
       
       
       <Routes>
         <Route path='/' element={<Articles />}> </Route>
         <Route path='/topics/:topic' element={<Topic/>}> </Route>
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
-        <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
+        <Route path='/articles/:article_id/comments' element={<Comments allComments={allComments}/>}> </Route>
 
       </Routes>
 
