@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { getArticles } from '../utils/api';
 
 
-function Articles() {
+function Articles({articles , setArticles}) {
 
-    const [articles, setArticles] = useState([]);
+    
     useEffect(() => {
-        getArticles().then((ArtilesFromApi) => {
-            setArticles(ArtilesFromApi);
+        getArticles().then((ArticlesFromApi) => {
+            setArticles(ArticlesFromApi);
         })
     }, [])   
     
@@ -16,7 +16,6 @@ function Articles() {
         <main className='main-display'>
             {articles.map((article) => {
                 return (
-
                     <div className='card-box' key={article.article_id}>
                         <li className='card' >
                             <h2> <Link to={`articles/${article.article_id}`}> {article.title} </Link></h2>

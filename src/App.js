@@ -1,16 +1,18 @@
 import './App.css';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Articles from './components/Articles';
 import Topic from './components/Topic';
 import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
-import PostComment from './components/PostComment';
-import DisplayComments from './components/DisplayComments';
+import SortBy from './components/SortBy';
+import { useState } from 'react';
 
 
 
 function App() {
+  const [articles, setArticles] = useState([]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -22,21 +24,24 @@ function App() {
         <input placeholder='authors, topics' type='text'/> 
         <button> search </button>
         <label> sortby </label>
-        <select className='sortby-box'>     
+        <SortBy setArticles={setArticles}/>
+        
+        {/* <select className='sortby-box'>     
             <option> date </option>
             <option> votes </option>
             <option> comments </option>
-        </select>
+        </select> */}
       </form>
  
 
       
       
       <Routes>
-        <Route path='/' element={<Articles />}> </Route>
-        <Route path='/topics/:topic' element={<Topic/>}> </Route>
+        <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>} />
+        <Route path='/topics/:topic' element={<Topic/>} />
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
-        <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
+        <Route path='/articles/:article_id/comments' element={<Comments/>} />
+        <Route path='/articles/?Sort_By=' element={<SortBy/>}> </Route>
 
       </Routes>
 
