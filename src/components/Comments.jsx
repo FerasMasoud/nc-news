@@ -4,9 +4,9 @@ import { displayCommentsOfSelectedArticle } from '../utils/api';
 
 
 
-function Comments() {
+function Comments({setAllComments, allComments}) {
     const { article_id } = useParams();
-    const [allComments, setAllComments] = useState([]);
+    
     
     useEffect(() => {
         displayCommentsOfSelectedArticle(article_id).then((comments) => {
