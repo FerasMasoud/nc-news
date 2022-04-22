@@ -10,7 +10,6 @@ function SortBy({setArticles}) {
     
     const handleSort = (e) => {
         let value = e.target.value;
-        console.log(value, ' << value')
 
         sorteArticlesBy(value).then((response) => {
             setSortValue(response.data);
