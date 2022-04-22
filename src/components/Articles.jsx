@@ -7,7 +7,7 @@ function Articles({articles , setArticles}) {
 
     
     useEffect(() => {
-        getArticles().then((ArtilesFromApi) => {
+        getArticles().then((ArticlesFromApi) => {
             setArticles(ArtilesFromApi);
         })
     }, [])   
