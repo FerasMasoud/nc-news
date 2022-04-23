@@ -5,8 +5,10 @@ import Topic from './components/Topic';
 import Nav from './components/Nav';
 import SingleArticle from './components/SingleArticle';
 import Comments from './components/Comments';
+import PostComment from './components/PostComment';
+import DisplayComments from './components/DisplayComments';
+import {useState} from 'react';
 import SortBy from './components/SortBy';
-import { useState } from 'react';
 
 
 
@@ -32,17 +34,15 @@ function App() {
             <option> comments </option>
         </select> */}
       </form>
- 
-
       
       
       <Routes>
         <Route path='/' element={<Articles articles={articles} setArticles={setArticles}/>} />
         <Route path='/topics/:topic' element={<Topic/>} />
         <Route path='/articles/:article_id' element={<SingleArticle/>}> </Route>
+        <Route path='/articles/:article_id/comments' element={<Comments/>}> </Route>
         <Route path='/articles/:article_id/comments' element={<Comments/>} />
         <Route path='/articles/?Sort_By=' element={<SortBy/>}> </Route>
-
       </Routes>
 
     </div>
