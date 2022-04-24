@@ -32,8 +32,9 @@ function PostComment ({setAllComments}) {
     console.log('form');
     return (
         <form onSubmit={handleCommentSubmit}>
+            <p>NOTE: please use username 'jessjelly' to be able to post comments</p>
             <label> username </label>
-            <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} required></input>
+            <input placeholder='jessjelly' type='text' value={username} onChange={(e) => setUsername(e.target.value)} required></input>
             <label > comment </label>
             <input type='text' value={comment} onChange={(e) => setComment(e.target.value)} required></input>
             <button > post comment </button>
