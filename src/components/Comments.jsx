@@ -23,10 +23,10 @@ function Comments({ allComments, setAllComments}) {
             <ul className='comments-box'> 
                 {allComments.length === 0 ? <p> no comments on this article </p> :allComments.map((comment) => {
                     return <li className='comments' key={comment.comment_id}> 
-                            {comment.body}; 
+                            {comment.body}
                             { comment.author === 'jessjelly' ?   
                                 <DeleteComment allComments={allComments} setAllComments={setAllComments} comment_id={comment.comment_id}/>
-                            : null}
+                            : null }
                         </li>
 
                 })}

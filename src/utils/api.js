@@ -46,8 +46,8 @@ export const postCommentToExistingArticle = (article_id, username, body) => {
     })
 }
 
-export const sorteArticlesBy = (sortBy) => {
-    return newApi.get(`/articles?sort_by=${sortBy}`).then((response) => {
+export const sorteArticlesBy = (sortBy, order) => {
+    return newApi.get(`/articles?sort_by=${sortBy}&order=${order}`).then((response) => {
         return response.data;
     })
 }

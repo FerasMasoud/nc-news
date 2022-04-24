@@ -4,30 +4,49 @@
   padding: 10px;
 }
 
-.App-header {
-  border: 1px solid blue;
-  margin: auto;
+.logo {
+  text-align: left;
+  color: #184e77;
+  text-shadow: 3px 3px 8px;
+} 
+
+h2, h3, p {
+  color: #184e77;
 }
 
-.nav {
-  border: 1px solid red; 
-  justify-content: space-between;
-  align-items: center;
+.title {
+  text-align: center;
+  color: #184e77;
+  border: 1px solid;
+  box-shadow: 4px -4px 9px;
 }
 
-.nav-items > li {
-  list-style-type: none;
+.search-box {
+  width: 200px;
+  padding: 5px;
+  margin-left: auto;
+}
+
+.sortby-box {
+  padding: 5px;
+  background-color: #168aad;
+  color: white;
+}
+
+.sortby-boxes {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .card-box {
-  padding: 2px;
-  margin: 6px auto;
-  
+  padding: 5px;
+  margin: 10px;
+  list-style-type: none;
 }
 
 .card {
-  border: 1px solid silver;
-  box-shadow: 1px 1px 7px 1px ;
+  border: 1px solid ;
+  box-shadow: 4px -4px 9px #184e77;
 }
 
 .comments-box {
@@ -36,50 +55,35 @@
 
 .comments {
   list-style-type: none;
-  border: 1px solid;
+  box-shadow: 4px -4px 9px #184e77;  
+  margin: 10px;
+  padding: 6px;
+}
+
+.comment-buttons {
+  padding: 7px;
   margin: 4px;
-  padding: 4px;
+}
+
+button {
+  padding: 7px;
+  background-color: #168aad;
+  color: white;
+  border-radius: 20px;
 }
 
 @media only screen and (min-width: 768px) {
   .App {
     display: grid;
-    grid-template-columns: min-content auto;
-    grid-template-rows: min-content;
-    grid-template-areas: 'top top'
-      'sidebar left'
-      'main main';
-    justify-items: center;
+    grid-template-columns: 20% auto;
+
   }
 
-  .nav {
-    display: flex;
-    justify-content: space-between;
-  }
-  .nav-items > li {
-    display: flex;
-  }
-
-  .App-header {
-    grid-area: top left;
-  }
-
-  .search-box {
-    grid-area: top left;
-  }
-
-  .sortby-box {
-    grid-area: left;
-  }
-
-  .main-display {
-    list-style-type: none;
-  }
-
-  .topic {
-    text-shadow: 1px 1px 1px blue;
-  }
-  
+  .logo {
+    text-align: left;
+    color: #184e77;
+    text-shadow: 3px 3px 8px;
+  } 
 }
 
 
