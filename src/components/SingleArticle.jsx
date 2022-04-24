@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import { getSingleArticles, upVoteAnArticle } from '../utils/api';
 import Comments from './Comments';
 import DisplayComments from './DisplayComments';
-// import { postCommentToExistingArticle } from '../utils/api';
 import PostComment from './PostComment';
+import DisplayCommentsForm from './DisplayCommentsForm';
+import ArticlesDoesNotExist from './ArticlesDoesNotExist';
+
 
 function SingleArticle() {
 
@@ -14,14 +16,21 @@ function SingleArticle() {
     const [upVote, setUpVote] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [error, setError] = useState('');
-    const [commentCount, setCommentCount] = useState(0);
 
-    //post comments states
-    
+    const [found, setFound] = useState(false);
+
     useEffect(() => {
         getSingleArticles(article_id).then((article) => {
+            console.log(article, ' << article');
             setSingleArticle(article);
+            setFound(true);
+
+            
         })
+        .catch((err) => {
+            console.log('no article found');           
+        })
+
     }, [])
 
     //vote
@@ -45,50 +54,40 @@ function SingleArticle() {
 
     return (
         <main className='main-display'>
-            <div className='card-box'> 
-                <li className='card'> 
-                    <h2> Title: {singleArticle.title} </h2>
-                    <h3> Author: {singleArticle.author} </h3>
-                    <h3> Topic: {singleArticle.topic} </h3> 
-                    <h3> Votes: {singleArticle.votes + upVote} <button onClick={handleVote}> vote </button> </h3> 
-                    <p> {error} </p>
-                    <h3> comments: {singleArticle.comment_count} </h3> 
 
-                    <div className='comment-buttons'>
-                        <>
-                            <DisplayCommentForm>
-                                <PostComment setAllComments={setAllComments}/>
-                            </DisplayCommentForm>
-                        </>
-                        <section>
-                            <DisplayComments>       
-                                <Comments setAllComments={setAllComments} allComments={allComments}/>
-                            </DisplayComments>
-                        </section>  
-                    </div>
+            {!found ? <ArticlesDoesNotExist/> :    
+                <div className='card-box'> 
+                    <li className='card'> 
+                        <h2> Title: {singleArticle.title} </h2>
+                        <p> created at: {singleArticle.created_at} </p>
+                        <h3> Author: {singleArticle.author} </h3>
+                        <h3> Topic: {singleArticle.topic} </h3> 
+                        <h3> Votes: {singleArticle.votes + upVote} <button onClick={handleVote}> vote </button> </h3> 
+                        <p> {error} </p>
+                        <h3> comments: {singleArticle.comment_count} </h3> 
 
-                    <p> created at: {singleArticle.created_at} </p>
-
-                </li>
-            </div>
+                        <div className='comment-buttons'>
+                            <>
+                                <DisplayCommentsForm>
+                                    <PostComment setAllComments={setAllComments}/>
+                                </DisplayCommentsForm>
+                            </>
+                            <section>
+                                <DisplayComments>       
+                                    <Comments setAllComments={setAllComments} allComments={allComments}/>
+                                </DisplayComments>
+                            </section>  
+                        </div>
+                    </li>
+                </div>    
+            }
         </main>
+        
+        
     )
 
 }
 
-// move to a seperate file
-function DisplayCommentForm ({children}) {
-    const [form, setForm] = useState(false);
-
-    const toggleForm = () => {
-        setForm((currState) => !currState)     
-    }
-
-    return <div>
-        {form ? children : null}
-        <button onClick={toggleForm}> add comment </button>
-    </div>
-} 
 
 
 export default SingleArticle
